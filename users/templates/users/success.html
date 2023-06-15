@@ -1,0 +1,13 @@
+{% extends "users/layout.html" %}
+
+{% block content %}
+  <h1>Success</h1>
+  <p>Created Documents:</p>
+  <ul>
+    {% for document in documents %}
+      <li>{{ document.name }} - <a href="{{ document.path }}">Download</a></li>
+    {% empty %}
+      <li>No documents created.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

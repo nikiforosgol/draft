@@ -1,0 +1,13 @@
+{% extends "users/layout.html" %}
+
+{% block content %}
+  <h1>Dashboard</h1>
+  <p>Practice Areas:</p>
+  <ul>
+    {% for practice_area in practice_areas %}
+      <li><a href="{% url 'users:projects' practice_area.slug %}">{{ practice_area.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+

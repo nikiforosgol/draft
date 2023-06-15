@@ -1,0 +1,22 @@
+{% extends 'users/layout.html' %}
+
+{% block content %}
+    <h2>Projects: {{ practice_area.name }}</h2>
+
+    <form method="POST" action="{% url 'users:input' %}">
+        {% csrf_token %}
+
+        {% for project in projects %}
+            <h3>{{ project.name }}</h3>
+            {% for document in project.document_set.all %}
+                <label>
+                    <input type="checkbox" name="documents[]" value="{{ document.id }}">
+                    {{ document.name }}
+                </label><br>
+            {% endfor %}
+        {% endfor %}
+
+        <button type="submit">Start Project</button>
+    </form>
+{% endblock %}
+
